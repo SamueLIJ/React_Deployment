@@ -1,10 +1,11 @@
-.App {
+/* .App {
   text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+ 
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -35,4 +36,358 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.object{
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
+  margin: 10% 25% 25% 40%;
+}
+
+
+.row1{
+  display:flex;
+  flex-direction: row;
+  gap: 12px;
+ 
+} */
+
+/* untuk lesson 3 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  /* background: linear-gradient(
+    90deg,
+    rgb(51, 197, 255) 0%,
+    rgba(100, 115, 255, 1) 100%
+  ); */
+  background-image: radial-gradient(circle at 85% 1%, 
+  rgba(255,255,255, 0.05) 0%, rgba(255,255,255, 0.05) 96%,transparent 96%, transparent 100%),
+  radial-gradient(circle at 14% 15%, rgba(255,255,255, 0.05) 0%, 
+  rgba(255,255,255, 0.05) 1%,transparent 1%, transparent 100%),radial-gradient(circle at 60% 90%, 
+  rgba(255,255,255, 0.05) 0%, rgba(255,255,255, 0.05) 20%,transparent 20%, transparent 100%),
+  radial-gradient(circle at 79% 7%, rgba(255,255,255, 0.05) 0%, rgba(255,255,255, 0.05) 78%,transparent 78%, 
+  transparent 100%),radial-gradient(circle at 55% 65%, rgba(255,255,255, 0.05) 0%, rgba(255,255,255, 0.05) 52%,
+  transparent 52%, transparent 100%),linear-gradient(169deg, rgb(52,81,215),rgb(96, 189, 244));
+}
+
+.all{
+  display: grid;
+  grid-template-columns: 400px 500px;
+}
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 520px;
+  min-height: 500px;
+  background: #161a2b;
+  text-align: center;
+  margin: 108px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+}
+
+h1 {
+  margin: 32px 0;
+  color: #fff;
+  font-size: 24px;
+}
+
+.rainbow-text {
+  margin: 32px 0;
+  /* font-size: 24px; */
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+  font-size: 5em;
+  width: 5em;
+  line-height: 0.9em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  /* Create a conic gradient. */
+  /* Double percentages to avoid blur (#000 10%, #fff 10%, #fff 20%, ...). */
+  background: #CA4246;
+  background-color: #CA4246;
+  background: conic-gradient(
+    #CA4246 16.666%, 
+    #E16541 16.666%, 
+    #E16541 33.333%, 
+    #F18F43 33.333%, 
+    #F18F43 50%, 
+    #8B9862 50%, 
+    #8B9862 66.666%, 
+    #476098 66.666%, 
+    #476098 83.333%, 
+    #A7489B 83.333%);
+  
+  /* Set thee background size and repeat properties. */
+  background-size: 57%;
+  background-repeat: repeat;
+  
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  
+  /* Animate the text when loading the element. */
+  /* This animates it on page load and when hovering out. */
+  animation: rainbow-text-animation-rev 0.5s ease forwards;
+
+  cursor: pointer;
+}
+
+/* Add animation on hover. */
+.rainbow-text:hover {
+  animation: rainbow-text-animation 0.5s ease forwards;
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-animation {
+  0% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+}
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-animation-rev {
+  0% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+}
+
+.complete {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.todo-form {
+  margin-bottom: 32px;
+}
+
+.todo-input {
+  padding: 14px 32px 14px 16px;
+  border-radius: 4px 0 0 4px;
+  border: 2px solid #5d0cff;
+  outline: none;
+  width: 320px;
+  background: transparent;
+  color: #fff;
+}
+
+.todo-input::placeholder {
+  color: #e2e2e2;
+}
+
+.todo-button {
+  padding: 16px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.todo-input.edit {
+  border: 2px solid #149fff;
+}
+
+.todo-button.edit {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 159, 255, 1) 0%,
+    rgba(17, 122, 255, 1) 100%
+  );
+  padding: 16px 22px;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.todo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px auto;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 118, 20, 1) 0%,
+    rgba(255, 84, 17, 1) 100%
+  );
+
+  padding: 16px;
+  border-radius: 5px;
+  width: 90%;
+}
+
+.todo-row:nth-child(4n + 1) {
+  background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  );
+}
+
+.todo-row:nth-child(4n + 2) {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 12, 241, 1) 0%,
+    rgba(250, 0, 135, 1) 100%
+  );
+}
+
+.todo-row:nth-child(4n + 3) {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 159, 255, 1) 0%,
+    rgba(17, 122, 255, 1) 100%
+  );
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  margin-right: 5px;
+  color: #fff;
+}
+
+.edit-icon {
+  color: #fff;
+}
+
+
+/* navbar */
+
+nav{
+  background-color: rgb(59, 182, 131);
+  width: 300px;
+  height: 100vh;
+  margin-top:-48px;
+  transition: 0.8s ease-in-out;
+}
+
+.nav-hide{
+  margin-left: -300px;
+  transition: 0.8s ease-in-out;
+}
+nav li{
+  padding: 60px 30px 10px 30px;
+}
+
+Link{
+  text-decoration: none;
+  color: white;
+}
+
+.icon{
+  margin: 15px;
+  cursor: pointer;
+  z-index: 2;
+
+}
+
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+
+  25%{
+    transform: rotate(30deg);
+  }
+
+  50%{
+    transform: rotate(60deg);
+  }
+
+  75%{
+    transform: rotate(90deg);
+  }
+
+  100%{
+    transform: rotate(180deg);
+  }
+}
+
+.active{
+  color:rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.navbar2{
+  background-color: rgb(255, 255, 255);
+  width: 300px;
+  height: 100vh;
+  margin-top:0px;
+  transition: 0.8s ease-in-out;
+}
+
+.about-nav{
+  display: grid;
+  grid-template-columns: 400px 500px;
+}
+
+.nfb{
+  background-color: blue;
+  border: none;
+  color:white;
+  width: 200px;
+  margin-top: 10px;
+  padding: 10px;
+
+}
+.nfb:hover{
+  background-color: #5d0cff;
+}
+
+.wp{
+
+  text-align: center;
+  width: 100%;
+  height: auto;
+  margin-left: 100%;
+  margin-top: 10%;
 }
